@@ -1,7 +1,8 @@
+package capitalizeFirstLetter;
 
 public class CapitalizeFirstLetter {
 
-    public String capitalizeFirstLetters(String s) {
+    public static String capitalizeFirstLetters(String s) {
         /*
           Please implement this method to
           capitalize all first letters of the words in the given String.
@@ -12,18 +13,17 @@ public class CapitalizeFirstLetter {
           The spaced also can be found at the beginning or the end of the parameter string,
           and you need to preserve them.
          */
-    
     	s = s.toLowerCase();
     	s = Character.toString(s.charAt(0)).toUpperCase()+s.substring(1);
+
+    	if(s == null || s.isEmpty())
+    		return null;
     	
-    	for (int i = 1; i < s.length(); i++) {
-			if (s.charAt(i-1)==' ') {
-//				System.out.println("sad");
-//				s.replace(s.charAt(i), Character.toString(s.charAt(i)).toUpperCase().toCharArray());
-			}
-		}
-    	System.out.println(s);
-//    	return s;
-    	return new String(s.toCharArray());
+    	StringBuffer sb = new StringBuffer();
+    	for(String str : s.toLowerCase().split(" ")){
+    		sb.append(String.valueOf(str.charAt(0)).toUpperCase());
+    		sb.append(str.substring(1) + " ");
+    	}
+    	return sb.toString().trim();
     }
 }
